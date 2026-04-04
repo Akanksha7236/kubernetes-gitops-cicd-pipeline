@@ -5,5 +5,4 @@ resources:
   - deployment.yaml
   - service.yaml
   - hpa.yaml
-commonLabels:
-  app.kubernetes.io/part-of: portfolio-demo
+
