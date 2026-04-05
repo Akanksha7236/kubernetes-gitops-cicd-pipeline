@@ -76,4 +76,4 @@ pipeline {
       echo 'Failed stage — no push if failure occurred before Push (check Trivy or tests).'
     }
   }
-}
+
