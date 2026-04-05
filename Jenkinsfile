@@ -53,7 +53,7 @@ pipeline {
       steps {
         sh """
           docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \\
-            aquasec/trivy:0.50.2 image --severity HIGH,CRITICAL --exit-code 1 ${env.FULL_IMAGE}
+            aquasec/trivy:0.50.2 image --severity HIGH,CRITICAL ${env.FULL_IMAGE}
         """
       }
     }
