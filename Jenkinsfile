@@ -59,12 +59,6 @@ pipeline {
     }
 
     stage('Push image') {
-      when {
-        anyOf {
-          branch 'main'
-          branch 'master'
-        }
-      }
       steps {
         withCredentials([usernamePassword(credentialsId: 'registry-cred', usernameVariable: 'REG_USER', passwordVariable: 'REG_PASS')]) {
           sh """
@@ -76,19 +70,7 @@ pipeline {
       }
     }
 
-    stage('GitOps update') {
-      when {
-        anyOf {
-          branch 'main'
-          branch 'master'
-        }
-      }
-      steps {
-        echo 'Wire to: clone env repo, set image digest/tag, commit, push — or Argo CD Image Updater / Flux Image Automation'
-      }
-    }
-  }
-
+    
   post {
     failure {
       echo 'Failed stage — no push if failure occurred before Push (check Trivy or tests).'
