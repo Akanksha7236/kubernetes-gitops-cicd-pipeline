@@ -88,6 +88,7 @@ pipeline {
             git commit -m "Update image to '"${IMAGE_TAG}"'" || echo "No changes"
 
             git push https://${GIT_USER}:${GIT_PASS}@github.com/Akanksha7236/kubernetes-gitops-cicd-pipeline.git HEAD:main
+          '''
 
         } 
       }
