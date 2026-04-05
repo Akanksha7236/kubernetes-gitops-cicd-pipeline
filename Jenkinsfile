@@ -40,9 +40,9 @@ pipeline {
       steps {
         sh """
           docker rm -f demo-api-smoke 2>/dev/null || true
-          docker run -d --name demo-api-smoke -p 13000:3000 ${env.FULL_IMAGE}
+          docker run -d --name demo-api-smoke -p 13007:3000 ${env.FULL_IMAGE}
           sleep 3
-          curl -fsS http://127.0.0.1:13000/health | grep -q ok
+          curl -fsS http://127.0.0.1:13007/health | grep -q ok
           docker rm -f demo-api-smoke
         """
       }
