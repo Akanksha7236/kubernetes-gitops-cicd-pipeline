@@ -69,8 +69,32 @@ pipeline {
         }
       }
     }
-  }
-  
+
+    stage('GitOps update') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'git_creds', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
+          sh '''
+            echo "Updating deployment.yaml..."
+
+             # Update image
+            sed -i "s|image:.*|image: '"${FULL_IMAGE}"'|g" kubernetes/deployment.yaml
+
+    # Git config
+            git config user.name "jenkins"
+            git config user.email "jenkins@local"
+
+    # Commit & push
+            git add kubernetes/deployment.yaml
+            git commit -m "Update image to '"${IMAGE_TAG}"'" || echo "No changes"
+
+            git push https://${GIT_USER}:${GIT_PASS}@github.com/Akanksha7236/kubernetes-gitops-cicd-pipeline.git HEAD:main
+
+        } 
+      }
+    }  
+
+ }            
+         
       
   post {
     failure {
