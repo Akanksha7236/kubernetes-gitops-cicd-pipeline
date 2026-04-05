@@ -6,7 +6,7 @@ pipeline {
   environment {
     // Example: REGISTRY_URL=docker.io  IMAGE_REPO=youruser  → image docker.io/youruser/demo-api
     REGISTRY_URL = "${env.REGISTRY_URL ?: 'docker.io'}"
-    IMAGE_REPO   = "${env.IMAGE_REPO ?: 'youruser'}"
+    IMAGE_REPO   = "${env.IMAGE_REPO ?: 'akanksha7236'}"
   }
 
   options {
