@@ -26,7 +26,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: app
-          image: akankshasingh23/myapp:v1
+          image: akankshasingh23/demo-api:latest
           imagePullPolicy: Always
           ports:
             - name: http
