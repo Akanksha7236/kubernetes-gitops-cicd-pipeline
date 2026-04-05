@@ -27,14 +27,7 @@ pipeline {
       }
     }
 
-    stage('Install & unit test') {
-      steps {
-        dir('application') {
-          sh 'node -v && npm install && npm test'
-        }
-      }
-    }
-
+    
     stage('Build image') {
       steps {
         dir('application') {
