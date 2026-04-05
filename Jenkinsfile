@@ -41,7 +41,8 @@ pipeline {
         sh """
           docker rm -f demo-api-smoke 2>/dev/null || true
           docker run -d --name demo-api-smoke -p 13007:3000 ${env.FULL_IMAGE}
-          sleep 3
+          sleep 8          
+          docker logs demo-api-smoke
           curl -fsS http://127.0.0.1:13007/health | grep -q ok
           docker rm -f demo-api-smoke
         """
